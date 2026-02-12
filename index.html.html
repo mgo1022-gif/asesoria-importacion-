@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asesoría en Importación - Global Trip</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .hero {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .hero h2 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .hero p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .process-step {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 4px solid #2a5298;
+        }
+        
+        .process-step h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+        
+        .process-step p {
+            font-size: 0.95em;
+            color: #666;
+        }
+        
+        .packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .package {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-top: 4px solid #2a5298;
+            transition: transform 0.3s ease;
+        }
+        
+        .package:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .package.featured {
+            border-top: 4px solid #ff6b35;
+            transform: scale(1.05);
+        }
+        
+        .package h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+        
+        .price {
+            font-size: 2.5em;
+            color: #2a5298;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .package ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .package li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .package li:before {
+            content: "✓";
+            color: #2a5298;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .package li:last-child {
+            border-bottom: none;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            display: inline-block;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .section-title {
+            text-align: center;
+            color: #1e3c72;
+            font-size: 2em;
+            margin-bottom: 40px;
+        }
+        
+        .faq {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-item h4 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        
+        .faq-item h4:before {
+            content: "+";
+            margin-right: 10px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .faq-item p {
+            color: #666;
+            margin-left: 20px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .btn-whatsapp:hover {
+            background: #128c7e;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+        
+        .matrix {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        table th, table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        table th {
+            background-color: #1e3c72;
+            color: white;
+        }
+        
+        table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 3px 6px;
+            border-radius: 3px;
+        }
+        
+        .whatsapp-badge {
+            background: #25d366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .package.featured {
+                transform: scale(1);
+            }
+            
+            .process {
+                grid-template-columns: 1fr;
+            }
+            
+            .packages {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌍 Asesoría en Importación</h1>
+        <p>Tu socio estratégico en comercio exterior | Argentina</p>
+        <div class="whatsapp-badge">📱 WhatsApp: +54 9 1155010680</div>
+    </header>
+    
+    <div class="container">
+        <div class="hero">
+            <h2>¿Querés importar sin improvisar?</h2>
+            <p>Ofrecemos <span class="highlight">asesoría profesional completa</span> para que tu operación de importación sea clara, ordenada y rentable.</p>
+            <p>Desde tu primera importación hasta armar un negocio escalable, tenemos soluciones para cada etapa.</p>
+            <p><strong>Nuestro modelo:</strong> Asesoría → Planificación → Despacho + Flete Internacional → Entrega lista.</p>
+        </div>
+        
+        <h2 class="section-title">¿Cómo funciona?</h2>
+        <div class="process">
+            <div class="process-step">
+                <h3>1️⃣ Calificación</h3>
+                <p>Te hacemos 3 preguntas para entender tu situación exacta (producto, modalidad, volumen).</p>
+            </div>
+            <div class="process-step">
+                <h3>2️⃣ Asesoría</h3>
+                <p>Análisis de tu caso, identificación de riesgos, estimación de costos y plan de acción en PDF.</p>
+            </div>
+            <div class="process-step">
+                <h3>3️⃣ Operación Completa</h3>
+                <p>Si avanzás, te derivamos con el sector comercial que gestiona despacho aduanero + flete internacional.</p>
+            </div>
+            <div class="process-step">
+                <h3>4️⃣ Entrega Lista</h3>
+                <p>Te llevamos el producto prácticamente listo. Desde la compra hasta tu puerta con cumplimiento total.</p>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Nuestros Servicios de Asesoría</h2>
+        <div class="packages">
+            <div class="package">
+                <h3>📌 Asesoría Individual</h3>
+                <div class="price">USD 120–150</div>
+                <ul>
+                    <li>1 hora de asesoría 1 a 1</li>
+                    <li>Análisis de tu caso puntual</li>
+                    <li>Estimación de costos</li>
+                    <li>Identificación de riesgos</li>
+                    <li>Plan de acción en PDF</li>
+                    <li>7–10 días de soporte</li>
+                </ul>
+                <p style="margin-bottom: 20px; color: #666; font-size: 0.9em;">Para operación puntual o validar viabilidad.</p>
+                <a href="https://wa.me/5491155010680?text=Hola%20Gerardo,%20quiero%20una%20asesor%C3%ADa%20individual" class="btn">Agendar Asesoría</a>
+            </div>
+            
+            <div class="package featured">
+                <h3>⭐ Paquete Starter (USD 300)</h3>
+                <div class="price">USD 300</div>
+                <ul>
+                    <li>Diagnóstico completo</li>
+                    <li>Checklist documental</li>
+                    <li>Costo total estimado</li>
+                    <li>Hoja de ruta 30 días</li>
+                    <li>Instrucciones para proveedor</li>
+                    <li>7 días de soporte</li>
+                </ul>
+                <p style="margin-bottom: 20px; color: #666; font-size: 0.9em;">Para primera importación con método.</p>
+                <a href="https://wa.me/5491155010680?text=Hola%20Gerardo,%20quiero%20el%20paquete%20Starter" class="btn">Contratar Starter</a>
+            </div>
+            
+            <div class="package">
+                <h3>🎯 Paquete Pro (USD 400)</h3>
+                <div class="price">USD 400</div>
+                <ul>
+                    <li>Revisión de documentación</li>
+                    <li>Matriz de riesgos completa</li>
+                    <li>HS tentativo con fundamentos</li>
+                    <li>Plan de ejecución</li>
+                    <li>2 reuniones de asesoría</li>
+                    <li>10 días de soporte</li>
+                </ul>
+                <p style="margin-bottom: 20px; color: #666; font-size: 0.9em;">Para operaciones en marcha o complejas.</p>
+                <a href="https://wa.me/5491155010680?text=Hola%20Gerardo,%20quiero%20el%20paquete%20Pro" class="btn">Contratar Pro</a>
+            </div>
+            
+            <div class="package">
+                <h3>🚀 Paquete Control (USD 500)</h3>
+                <div class="price">USD 500</div>
+                <ul>
+                    <li>Auditoría de línea (3 SKUs)</li>
+                    <li>Estandarización documental</li>
+                    <li>SOP operativo personalizado</li>
+                    <li>Plan de prevención de errores</li>
+                    <li>2 reuniones + seguimiento</li>
+                    <li>14 días de soporte</li>
+                </ul>
+                <p style="margin-bottom: 20px; color: #666; font-size: 0.9em;">Para importar seguido sin depender de memoria.</p>
+                <a href="https://wa.me/5491155010680?text=Hola%20Gerardo,%20quiero%20el%20paquete%20Control" class="btn">Contratar Control</a>
+            </div>
+            
+            <div class="package">
+                <h3>💼 Retainer Mensual</h3>
+                <div class="price">USD 400–800/mes</div>
+                <ul>
+                    <li>4–8 horas consulta mensual</li>
+                    <li>Revisión documental ilimitada</li>
+                    <li>Respuesta prioritaria</li>
+                    <li>Auditoría trimestral</li>
+                    <li>Acceso a cursos + material</li>
+                    <li>Capacitación interna (nivel Premium)</li>
+                </ul>
+                <p style="margin-bottom: 20px; color: #666; font-size: 0.9em;">Para empresas con operaciones recurrentes.</p>
+                <a href="https://wa.me/5491155010680?text=Hola%20Gerardo,%20quiero%20un%20retainer%20mensual" class="btn">Consultar Retainer</a>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Matriz de Decisión Rápida</h2>
+        <div class="matrix">
+            <table>
+                <tr>
+                    <th>Tu situación</th>
+                    <th>Solución recomendada</th>
+                    <th>Precio</th>
+                </tr>
+                <tr>
+                    <td>Recién empiezo, sin proyecto claro</td>
+                    <td>Curso gratuito + asesoría después</td>
+                    <td>Gratis / USD 120–150</td>
+                </tr>
+                <tr>
+                    <td>Tengo producto, proveedor definido, primera vez</td>
+                    <td>Asesoría individual</td>
+                    <td>USD 120–150</td>
+                </tr>
+                <tr>
+                    <td>Estoy por comprar, necesito plan completo</td>
+                    <td>Paquete Starter</td>
+                    <td>USD 300</td>
+                </tr>
+                <tr>
+                    <td>Operación en marcha, hay riesgos</td>
+                    <td>Paquete Pro</td>
+                    <td>USD 400</td>
+                </tr>
+                <tr>
+                    <td>Importo 2+ veces/mes, quiero método</td>
+                    <td>Paquete Control o Retainer</td>
+                    <td>USD 500 / USD 400–800/mes</td>
+                </tr>
+                <tr>
+                    <td>Quiero armar negocio escalable (ML, retail)</td>
+                    <td>OnlySellers (curso completo)</td>
+                    <td>USD 900</td>
+                </tr>
+            </table>
+        </div>
+        
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <h4>¿Cuánto tarda una asesoría?</h4>
+                <p>La asesoría individual es de 1 hora. Los paquetes incluyen 1–2 reuniones + entregables por email. Los tiempos de entrega son 48–72 hs hábiles.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>¿Qué pasa después de la asesoría?</h4>
+                <p>Si avanzás con la operación, te derivamos con nuestro sector comercial que gestiona el despacho aduanero + flete internacional. Nosotros te entregamos la operación prácticamente lista.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>¿Hacen despacho aduanero?</h4>
+                <p>Sí. Global Trip realiza el despacho aduanero + flete internacional de forma integral. La asesoría (mi servicio) es la parte de planificación previa. El sector comercial ejecuta la operación completa.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>¿Qué incluye "operación lista"?</h4>
+                <p>Significa que gestionamos todo: documentación ante Aduana, clasificación, impuestos, flete internacional, nacionalización y logística local. Vos recibes el producto cumpliendo con todas las regulaciones.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>¿Puedo cambiar de paquete después?</h4>
+                <p>Sí. Si contratas asesoría individual y después querés un paquete, lo que pagaste se toma a cuenta. Si empezás con Starter y necesitas más, podés avanzar a Pro o Control.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>¿Horarios de atención?</h4>
+                <p>Lunes a viernes, 9 a 18 hs. Los seguimientos y soporte se manejan por WhatsApp/email con respuesta en menos de 2 horas.</p>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2>¿Listo para importar con método?</h2>
+            <p>Empezamos con una breve calificación (3 preguntas) y te recomendamos la solución correcta.</p>
+            <a href="https://wa.me/5491155010680?text=Hola%20Gerardo,%20me%20gustar%C3%ADa%20conocer%20c%C3%B3mo%20funciona" class="btn-whatsapp">Contactar por WhatsApp</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Global Trip | Asesoría en Comercio Exterior | Argentina</p>
+        <p>Gerardo Miño — Asesor en Importación | Especialista en Planificación Aduanera</p>
+        <p>📱 WhatsApp: +54 9 1155010680</p>
+    </footer>
+</body>
+</html>
