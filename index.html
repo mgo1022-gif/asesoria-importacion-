@@ -310,17 +310,400 @@
             header h1 {
                 font-size: 1.8em;
             }
-            
+
             .package.featured {
                 transform: scale(1);
             }
-            
+
             .process {
                 grid-template-columns: 1fr;
             }
-            
+
             .packages {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== COTIZADOR ===== */
+        .cotizador {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+        }
+
+        .calc-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #2a5298;
+            margin-bottom: 20px;
+        }
+
+        .calc-section h4 {
+            color: #1e3c72;
+            margin-bottom: 18px;
+            font-size: 1.05em;
+        }
+
+        .calc-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .calc-row-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+        }
+
+        .dim-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-field label {
+            font-size: 0.85em;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .form-field small {
+            font-size: 0.78em;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        .form-field input,
+        .form-field select {
+            padding: 10px 12px;
+            border: 1.5px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.95em;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: white;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus {
+            outline: none;
+            border-color: #2a5298;
+            box-shadow: 0 0 0 3px rgba(42,82,152,0.08);
+        }
+
+        .input-prefix {
+            display: flex;
+            align-items: center;
+            border: 1.5px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .input-prefix:focus-within {
+            border-color: #2a5298;
+            box-shadow: 0 0 0 3px rgba(42,82,152,0.08);
+        }
+
+        .input-prefix span {
+            background: #f0f4ff;
+            padding: 10px 12px;
+            color: #2a5298;
+            font-weight: bold;
+            border-right: 1px solid #ddd;
+            flex-shrink: 0;
+        }
+
+        .input-prefix input {
+            border: none;
+            border-radius: 0;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .input-prefix input:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .input-suffix {
+            display: flex;
+            align-items: center;
+            border: 1.5px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .input-suffix:focus-within {
+            border-color: #2a5298;
+            box-shadow: 0 0 0 3px rgba(42,82,152,0.08);
+        }
+
+        .input-suffix span {
+            background: #f0f4ff;
+            padding: 10px 12px;
+            color: #2a5298;
+            font-weight: bold;
+            border-left: 1px solid #ddd;
+            flex-shrink: 0;
+        }
+
+        .input-suffix input {
+            border: none;
+            border-radius: 0;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .input-suffix input:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .peso-info {
+            margin-top: 12px;
+            background: #e8f0fe;
+            border-radius: 6px;
+            padding: 12px 16px;
+            font-size: 0.9em;
+        }
+
+        .peso-info .peso-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0;
+            color: #2a5298;
+        }
+
+        .peso-info .peso-facturable {
+            font-weight: bold;
+            border-top: 1px solid #b3c8f5;
+            margin-top: 6px;
+            padding-top: 8px;
+            color: #1e3c72;
+        }
+
+        .peso-tag {
+            background: #2a5298;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.8em;
+        }
+
+        .btn-calcular {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-calcular:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30,60,114,0.3);
+        }
+
+        .resultado-panel {
+            margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            animation: slideIn 0.3s ease;
+            border: 2px solid #1e3c72;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .resultado-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+
+        .resultado-header h3 {
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+
+        .resultado-totales {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 0 30px 25px;
+            gap: 15px;
+        }
+
+        .total-box {
+            background: rgba(255,255,255,0.12);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .total-box.unitario {
+            background: #ff6b35;
+        }
+
+        .total-box .total-label {
+            font-size: 0.85em;
+            opacity: 0.85;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .total-box .total-value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .desglose-tabla {
+            background: white;
+            padding: 25px 30px;
+        }
+
+        .desglose-tabla h4 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .desglose-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.95em;
+        }
+
+        .desglose-row:last-child {
+            border-bottom: none;
+        }
+
+        .desglose-row .d-label {
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .desglose-row .d-pct {
+            font-size: 0.8em;
+            background: #f0f4ff;
+            color: #2a5298;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .desglose-row .d-value {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .desglose-row.subtotal {
+            background: #f0f4ff;
+            padding: 10px 12px;
+            border-radius: 5px;
+            margin: 5px 0;
+            border-bottom: none;
+        }
+
+        .desglose-row.subtotal .d-label {
+            color: #1e3c72;
+            font-weight: 600;
+        }
+
+        .desglose-row.subtotal .d-value {
+            color: #1e3c72;
+            font-weight: bold;
+        }
+
+        .desglose-row.grand-total {
+            background: #1e3c72;
+            color: white;
+            padding: 14px 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border-bottom: none;
+        }
+
+        .desglose-row.grand-total .d-label {
+            color: white;
+            font-weight: bold;
+            font-size: 1.05em;
+        }
+
+        .desglose-row.grand-total .d-value {
+            color: white;
+            font-size: 1.1em;
+        }
+
+        .peso-resultado {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            border-top: 1px solid #eee;
+            font-size: 0.88em;
+            color: #666;
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .peso-resultado strong {
+            color: #2a5298;
+        }
+
+        @media (max-width: 768px) {
+            .calc-row-2,
+            .calc-row-3,
+            .dim-row {
+                grid-template-columns: 1fr;
+            }
+
+            .resultado-totales {
+                grid-template-columns: 1fr;
+            }
+
+            .cotizador {
+                padding: 20px;
+            }
+
+            .calc-section {
+                padding: 18px;
+            }
+
+            .desglose-tabla {
+                padding: 20px 15px;
+            }
+
+            .peso-resultado {
+                flex-direction: column;
+                gap: 8px;
             }
         }
     </style>
@@ -360,6 +743,215 @@
             </div>
         </div>
         
+        <h2 class="section-title">Cotizador de Importación por Courier</h2>
+        <div class="cotizador">
+            <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 1.05em;">Calculá el costo total de tu importación: peso volumétrico, aranceles, impuestos y gastos del agente. Ingresá los datos y obtené el desglose completo.</p>
+
+            <!-- Mercadería -->
+            <div class="calc-section">
+                <h4>📦 Datos de la Mercadería</h4>
+                <div class="calc-row-2">
+                    <div class="form-field">
+                        <label>Valor de la mercadería (USD FOB)</label>
+                        <div class="input-prefix">
+                            <span>$</span>
+                            <input type="number" id="valorMercaderia" placeholder="0.00" min="0" step="0.01" oninput="actualizarPeso()">
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label>Unidades</label>
+                        <input type="number" id="unidades" placeholder="1" min="1" value="1">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Peso y dimensiones -->
+            <div class="calc-section">
+                <h4>⚖️ Peso y Dimensiones</h4>
+                <div class="calc-row-2" style="margin-bottom: 18px;">
+                    <div class="form-field">
+                        <label>Peso real (kg)</label>
+                        <input type="number" id="pesoReal" placeholder="0.00" min="0" step="0.01" oninput="actualizarPeso()">
+                    </div>
+                    <div class="form-field">
+                        <label>Divisor volumétrico</label>
+                        <select id="divisorVol" onchange="actualizarPeso()">
+                            <option value="5000">5000 — DHL / FedEx / UPS</option>
+                            <option value="6000">6000 — IATA estándar</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="font-size: 0.85em; color: #555; font-weight: 600; margin-bottom: 10px;">Dimensiones del bulto (cm) — Largo × Ancho × Alto</div>
+                <div class="dim-row">
+                    <div class="form-field">
+                        <label>Largo</label>
+                        <input type="number" id="largo" placeholder="0" min="0" step="0.1" oninput="actualizarPeso()">
+                    </div>
+                    <div class="form-field">
+                        <label>Ancho</label>
+                        <input type="number" id="ancho" placeholder="0" min="0" step="0.1" oninput="actualizarPeso()">
+                    </div>
+                    <div class="form-field">
+                        <label>Alto</label>
+                        <input type="number" id="alto" placeholder="0" min="0" step="0.1" oninput="actualizarPeso()">
+                    </div>
+                </div>
+                <div id="pesoInfo" class="peso-info" style="display:none;">
+                    <div class="peso-item"><span>Peso real:</span><span id="pesoRealDisplay">—</span></div>
+                    <div class="peso-item"><span>Peso volumétrico (L×A×H÷divisor):</span><span id="pesoVolDisplay">—</span></div>
+                    <div class="peso-item peso-facturable">
+                        <span>Peso facturable (el mayor):</span>
+                        <span style="display:flex; align-items:center; gap:8px;">
+                            <span id="pesoFacturableDisplay">—</span>
+                            <span class="peso-tag" id="pesoTag">—</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flete y gastos -->
+            <div class="calc-section">
+                <h4>✈️ Flete y Gastos del Courier</h4>
+                <div class="calc-row-2">
+                    <div class="form-field">
+                        <label>Flete internacional (USD)</label>
+                        <div class="input-prefix">
+                            <span>$</span>
+                            <input type="number" id="flete" placeholder="0.00" min="0" step="0.01">
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label>Gastos admin courier (USD)</label>
+                        <div class="input-prefix">
+                            <span>$</span>
+                            <input type="number" id="gastosAdmin" value="70" min="0" step="0.01">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aranceles e impuestos -->
+            <div class="calc-section">
+                <h4>🏛️ Aranceles e Impuestos</h4>
+                <div class="calc-row-3">
+                    <div class="form-field">
+                        <label>Derechos de importación</label>
+                        <div class="input-suffix">
+                            <input type="number" id="pctDerechos" placeholder="0" min="0" max="100" step="0.01">
+                            <span>%</span>
+                        </div>
+                        <small>Según posición arancelaria (NCM)</small>
+                    </div>
+                    <div class="form-field">
+                        <label>Tasa de estadística</label>
+                        <div class="input-suffix">
+                            <input type="number" id="pctEstadistica" value="0.5" min="0" max="100" step="0.01">
+                            <span>%</span>
+                        </div>
+                        <small>Máx. USD 500 por operación</small>
+                    </div>
+                    <div class="form-field">
+                        <label>IVA</label>
+                        <div class="input-suffix">
+                            <input type="number" id="pctIVA" value="21" min="0" max="100" step="0.01">
+                            <span>%</span>
+                        </div>
+                        <small>General: 21%</small>
+                    </div>
+                    <div class="form-field">
+                        <label>IVA adicional</label>
+                        <div class="input-suffix">
+                            <input type="number" id="pctIVAAdic" value="10.5" min="0" max="100" step="0.01">
+                            <span>%</span>
+                        </div>
+                        <small>10.5% bienes consumo / 20% otros</small>
+                    </div>
+                    <div class="form-field">
+                        <label>Percepción Ganancias</label>
+                        <div class="input-suffix">
+                            <input type="number" id="pctGanancias" value="3" min="0" max="100" step="0.01">
+                            <span>%</span>
+                        </div>
+                        <small>3% inscripto / 6% no inscripto</small>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-calcular" onclick="calcular()">Calcular Costo Total de Importación</button>
+
+            <!-- Panel de resultado -->
+            <div id="resultado" class="resultado-panel" style="display:none;">
+                <div class="resultado-header">
+                    <h3>Resumen de Costos de Importación</h3>
+                    <p style="opacity:0.8; font-size:0.9em; margin-top:5px;" id="resumenSubtitulo"></p>
+                </div>
+                <div class="resultado-totales">
+                    <div class="total-box">
+                        <div class="total-label">COSTO TOTAL</div>
+                        <div class="total-value" id="totalGeneral">$ 0.00</div>
+                        <div style="font-size:0.8em; opacity:0.7; margin-top:5px;">USD</div>
+                    </div>
+                    <div class="total-box unitario">
+                        <div class="total-label">COSTO POR UNIDAD</div>
+                        <div class="total-value" id="totalUnitario">$ 0.00</div>
+                        <div style="font-size:0.8em; opacity:0.85; margin-top:5px;" id="unidadesLabel">USD / unidad</div>
+                    </div>
+                </div>
+                <div class="desglose-tabla">
+                    <h4>Desglose de Costos</h4>
+                    <div class="desglose-row">
+                        <span class="d-label">Valor FOB (mercadería)</span>
+                        <span class="d-value" id="d-fob">$ 0.00</span>
+                    </div>
+                    <div class="desglose-row">
+                        <span class="d-label">Flete internacional</span>
+                        <span class="d-value" id="d-flete">$ 0.00</span>
+                    </div>
+                    <div class="desglose-row subtotal">
+                        <span class="d-label">Valor CIF (base de cálculo arancelario)</span>
+                        <span class="d-value" id="d-cif">$ 0.00</span>
+                    </div>
+                    <div class="desglose-row">
+                        <span class="d-label">Derechos de importación <span class="d-pct" id="lbl-derechos">0%</span></span>
+                        <span class="d-value" id="d-derechos">$ 0.00</span>
+                    </div>
+                    <div class="desglose-row">
+                        <span class="d-label">Tasa de estadística <span class="d-pct" id="lbl-estadistica">0.5%</span></span>
+                        <span class="d-value" id="d-estadistica">$ 0.00</span>
+                    </div>
+                    <div class="desglose-row subtotal">
+                        <span class="d-label">Base imponible para IVA (CIF + Derechos + Estadística)</span>
+                        <span class="d-value" id="d-baseiva">$ 0.00</span>
+                    </div>
+                    <div class="desglose-row">
+                        <span class="d-label">IVA <span class="d-pct" id="lbl-iva">21%</span></span>
+                        <span class="d-value" id="d-iva">$ 0.00</span>
+                    </div>
+                    <div class="desglose-row" id="row-ivaadic">
+                        <span class="d-label">IVA adicional <span class="d-pct" id="lbl-ivaadic">10.5%</span></span>
+                        <span class="d-value" id="d-ivaadic">$ 0.00</span>
+                    </div>
+                    <div class="desglose-row" id="row-ganancias">
+                        <span class="d-label">Percepción Ganancias <span class="d-pct" id="lbl-ganancias">3%</span></span>
+                        <span class="d-value" id="d-ganancias">$ 0.00</span>
+                    </div>
+                    <div class="desglose-row">
+                        <span class="d-label">Gastos admin courier</span>
+                        <span class="d-value" id="d-admin">$ 70.00</span>
+                    </div>
+                    <div class="desglose-row grand-total">
+                        <span class="d-label">TOTAL GENERAL</span>
+                        <span class="d-value" id="d-total">$ 0.00</span>
+                    </div>
+                </div>
+                <div class="peso-resultado">
+                    <span>Peso real: <strong id="r-pesoreal">—</strong></span>
+                    <span>Peso volumétrico: <strong id="r-pesovolum">—</strong></span>
+                    <span>Peso facturable (se cobró): <strong id="r-pesofact">—</strong></span>
+                </div>
+            </div>
+        </div>
+
         <h2 class="section-title">Nuestros Servicios de Asesoría</h2>
         <div class="packages">
             <div class="package">
@@ -524,5 +1116,126 @@
         <p>Gerardo Miño — Asesor en Importación | Especialista en Planificación Aduanera</p>
         <p>📱 WhatsApp: +54 9 1155010680</p>
     </footer>
+    <script>
+        function actualizarPeso() {
+            var pesoReal = parseFloat(document.getElementById('pesoReal').value) || 0;
+            var largo    = parseFloat(document.getElementById('largo').value)    || 0;
+            var ancho    = parseFloat(document.getElementById('ancho').value)    || 0;
+            var alto     = parseFloat(document.getElementById('alto').value)     || 0;
+            var divisor  = parseInt(document.getElementById('divisorVol').value) || 5000;
+
+            var pesoVolumetrico = (largo * ancho * alto) / divisor;
+
+            if (pesoReal > 0 || (largo > 0 && ancho > 0 && alto > 0)) {
+                document.getElementById('pesoInfo').style.display = 'block';
+                document.getElementById('pesoRealDisplay').textContent    = pesoReal.toFixed(2) + ' kg';
+                document.getElementById('pesoVolDisplay').textContent     = pesoVolumetrico.toFixed(2) + ' kg';
+                var pesoFacturable = Math.max(pesoReal, pesoVolumetrico);
+                document.getElementById('pesoFacturableDisplay').textContent = pesoFacturable.toFixed(2) + ' kg';
+                var tag = document.getElementById('pesoTag');
+                if (pesoVolumetrico > pesoReal) {
+                    tag.textContent        = 'Volumétrico';
+                    tag.style.background   = '#ff6b35';
+                } else {
+                    tag.textContent        = 'Real';
+                    tag.style.background   = '#2a5298';
+                }
+            } else {
+                document.getElementById('pesoInfo').style.display = 'none';
+            }
+        }
+
+        function fmt(num) {
+            return '$ ' + num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        function calcular() {
+            var valorMercaderia = parseFloat(document.getElementById('valorMercaderia').value) || 0;
+            var unidades        = Math.max(1, parseInt(document.getElementById('unidades').value) || 1);
+            var pesoReal        = parseFloat(document.getElementById('pesoReal').value) || 0;
+            var largo           = parseFloat(document.getElementById('largo').value)    || 0;
+            var ancho           = parseFloat(document.getElementById('ancho').value)    || 0;
+            var alto            = parseFloat(document.getElementById('alto').value)     || 0;
+            var divisor         = parseInt(document.getElementById('divisorVol').value) || 5000;
+            var flete           = parseFloat(document.getElementById('flete').value)        || 0;
+            var gastosAdmin     = parseFloat(document.getElementById('gastosAdmin').value)   || 70;
+            var pctDerechos     = parseFloat(document.getElementById('pctDerechos').value)   || 0;
+            var pctEstadistica  = parseFloat(document.getElementById('pctEstadistica').value)|| 0.5;
+            var pctIVA          = parseFloat(document.getElementById('pctIVA').value)        || 21;
+            var pctIVAAdic      = parseFloat(document.getElementById('pctIVAAdic').value)    || 0;
+            var pctGanancias    = parseFloat(document.getElementById('pctGanancias').value)  || 0;
+
+            /* Peso facturable */
+            var pesoVolumetrico = (largo * ancho * alto) / divisor;
+            var pesoFacturable  = Math.max(pesoReal, pesoVolumetrico);
+
+            /* CIF = FOB + Flete */
+            var cif = valorMercaderia + flete;
+
+            /* Aranceles sobre CIF */
+            var derechos    = cif * (pctDerechos / 100);
+            var estadistica = cif * (pctEstadistica / 100);
+            estadistica     = Math.min(estadistica, 500); /* cap USD 500 */
+
+            /* Base imponible IVA */
+            var baseIVA = cif + derechos + estadistica;
+
+            /* Impuestos sobre base IVA */
+            var iva       = baseIVA * (pctIVA / 100);
+            var ivaAdic   = baseIVA * (pctIVAAdic / 100);
+            var ganancias = baseIVA * (pctGanancias / 100);
+
+            /* Total general */
+            var total         = cif + derechos + estadistica + iva + ivaAdic + ganancias + gastosAdmin;
+            var costoUnitario = total / unidades;
+
+            /* Actualizar etiquetas de porcentajes */
+            document.getElementById('lbl-derechos').textContent   = pctDerechos + '%';
+            document.getElementById('lbl-estadistica').textContent = pctEstadistica + '%';
+            document.getElementById('lbl-iva').textContent         = pctIVA + '%';
+            document.getElementById('lbl-ivaadic').textContent     = pctIVAAdic + '%';
+            document.getElementById('lbl-ganancias').textContent   = pctGanancias + '%';
+
+            /* Actualizar valores del desglose */
+            document.getElementById('d-fob').textContent        = fmt(valorMercaderia);
+            document.getElementById('d-flete').textContent      = fmt(flete);
+            document.getElementById('d-cif').textContent        = fmt(cif);
+            document.getElementById('d-derechos').textContent   = fmt(derechos);
+            document.getElementById('d-estadistica').textContent = fmt(estadistica);
+            document.getElementById('d-baseiva').textContent    = fmt(baseIVA);
+            document.getElementById('d-iva').textContent        = fmt(iva);
+            document.getElementById('d-ivaadic').textContent    = fmt(ivaAdic);
+            document.getElementById('d-ganancias').textContent  = fmt(ganancias);
+            document.getElementById('d-admin').textContent      = fmt(gastosAdmin);
+            document.getElementById('d-total').textContent      = fmt(total);
+
+            /* Totales destacados */
+            document.getElementById('totalGeneral').textContent  = fmt(total);
+            document.getElementById('totalUnitario').textContent = fmt(costoUnitario);
+            document.getElementById('unidadesLabel').textContent =
+                'USD / unidad (' + unidades + (unidades === 1 ? ' unidad' : ' unidades') + ')';
+
+            /* Subtítulo */
+            document.getElementById('resumenSubtitulo').textContent =
+                'FOB: ' + fmt(valorMercaderia) + '  |  Flete: ' + fmt(flete) + '  |  ' +
+                unidades + (unidades === 1 ? ' unidad' : ' unidades');
+
+            /* Peso en el pie del resultado */
+            document.getElementById('r-pesoreal').textContent  = pesoReal.toFixed(2) + ' kg';
+            document.getElementById('r-pesovolum').textContent = pesoVolumetrico.toFixed(2) + ' kg';
+            document.getElementById('r-pesofact').textContent  =
+                pesoFacturable.toFixed(2) + ' kg (' +
+                (pesoVolumetrico > pesoReal ? 'volumétrico' : 'real') + ')';
+
+            /* Mostrar u ocultar filas opcionales */
+            document.getElementById('row-ivaadic').style.display  = pctIVAAdic > 0  ? 'flex' : 'none';
+            document.getElementById('row-ganancias').style.display = pctGanancias > 0 ? 'flex' : 'none';
+
+            /* Mostrar panel */
+            var panel = document.getElementById('resultado');
+            panel.style.display = 'block';
+            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
 </body>
 </html>
